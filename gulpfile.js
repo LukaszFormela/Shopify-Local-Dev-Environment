@@ -27,6 +27,8 @@ for(directory of themeDirs) {
  * Preprocess SCSS files
  */
 var sass = require('gulp-sass');
+var sassUnicode = require('gulp-sass-unicode');
+var replace = require('gulp-replace');
 var strip_css_comments = require('gulp-strip-css-comments');
 var strip_json_comments = require('gulp-strip-json-comments');
 
@@ -35,14 +37,26 @@ gulp.task('process-styles', function() {
     srcDir + 'styles/theme.scss'
   ])
     .pipe(sass().on('error', sass.logError))
+    .pipe(sassUnicode())
     .pipe(strip_css_comments())
     .pipe(strip_json_comments())
+    .pipe(replace('../fonts/', ''))
     .pipe(gulp.dest(distDir + 'assets'))
 });
 
 /**
- * Concatenates styles and scripts
+ * Concatenates scripts
  */
+var concat = require('gulp-concat');
+
+gulp.task('concat-scripts', function() {
+  return gulp.src([
+    srcDir + 'scripts/**/*.js',
+    srcDir + 'scripts/*.js'
+  ])
+    .pipe(concat('scripts.js'))
+    .pipe(gulp.dest(distDir + 'assets/'))
+});
 
 /**
  * Sets watcher
@@ -63,5 +77,6 @@ gulp.task('default', gulp.parallel(
   ,'copy-snippets'
   ,'copy-templates'
   ,'process-styles'
+  ,'concat-scripts'
   ,'watch'
 ));
