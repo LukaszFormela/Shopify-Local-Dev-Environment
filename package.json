@@ -4,13 +4,15 @@
   "description": "Theme description",
   "main": "",
   "dependencies": {
-    "gulp-concat": "^2.6.1",
-    "gulp-strip-css-comments": "^2.0.0",
-    "gulp-strip-json-comments": "^4.0.1"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2"
+    "gulp-sass": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass-unicode": "^1.0.5",
+    "gulp-strip-css-comments": "^2.0.0",
+    "gulp-strip-json-comments": "^4.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
