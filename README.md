@@ -6,6 +6,10 @@ Local setup for Shopify Theme development (work in progress)
 - [npm](https://www.npmjs.com/get-npm)
 - Command line tool
 
+## Goals
+Theme kit will automatically deploy all theme files to Shopify directly, allowing you to preview live changes.
+Gulp will watch for changes in local files, then process them and move to directory observed by theme kit.
+
 ## How to start
 1. Create and navigate to empty directory (root directory)
    - either download and extract this repo in root directory,
