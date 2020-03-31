@@ -5,7 +5,7 @@ const themeDirs = [
     'config',
     'layout',
     'locales',
-    'section',
+    'sections',
     'snippets',
     'templates'
 ];
@@ -14,14 +14,14 @@ var gulp = require('gulp');
 /**
  * Copy files over from src to dist directories
  */
-for(directory of themeDirs) {
+themeDirs.forEach(function(directory) {
   gulp.task('copy-' + directory, function() {
     return gulp.src([
-      srcDir  + directory + '/**'
-    ], {base: srcDir + directory})
-      .pipe(gulp.dest(distDir + directory));
+      srcDir + directory + '/**'
+    ], {base: srcDir})
+      .pipe(gulp.dest(distDir));
   });    
-}
+});
 
 /**
  * Preprocess SCSS files
@@ -73,7 +73,7 @@ gulp.task('default', gulp.parallel(
   ,'copy-config'
   ,'copy-layout'
   ,'copy-locales'
-  ,'copy-section'
+  ,'copy-sections'
   ,'copy-snippets'
   ,'copy-templates'
   ,'process-styles'
