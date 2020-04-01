@@ -63,6 +63,7 @@ gulp.task('concat-scripts', function() {
  */
 gulp.task('watch', function() {
   gulp.watch([srcDir + 'styles'], gulp.series('process-styles'));
+  gulp.watch([srcDir + 'scripts'], gulp.series('concat-scripts'));
   for(directory of themeDirs) {
     gulp.watch([srcDir + directory], gulp.series('copy-' + directory));  
   }
